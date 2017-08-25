@@ -11,6 +11,7 @@ public class Client1Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Client1Application.class, args);
+        // TODO: 2017/8/26
     }
 
 }
