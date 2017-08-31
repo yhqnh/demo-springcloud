@@ -21,4 +21,9 @@ public class YhqController {
     private String feignConsumer(){
         return yhqService.hello();
     }
+
+    @RequestMapping("/feignConsumerParam")
+    private String feignConsumerParam(String name){
+        return yhqService.helloParam(name);
+    }
 }
