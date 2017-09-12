@@ -30,8 +30,4 @@ public class YhqController {
         return environment.getProperty("github","我是默认值");
     }
 
-    @RequestMapping("/getConfigFromArchars")
-    public String getConfigFromArchars(){
-        return "";
-    }
 }
