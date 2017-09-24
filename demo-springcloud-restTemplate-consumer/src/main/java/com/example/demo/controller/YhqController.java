@@ -17,8 +17,8 @@ public class YhqController {
     @Autowired
     private YhqService yhqService;
 
-    @RequestMapping("/ribbonConsumer")
-    private String ribbonConsumer(){
-        return yhqService.ribbonConsumer();
+    @RequestMapping("/restTemplateConsumer")
+    private String restTemplateConsumer(){
+        return yhqService.restTemplateConsumer();
     }
 }

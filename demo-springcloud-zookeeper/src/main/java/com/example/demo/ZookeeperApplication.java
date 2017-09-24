@@ -27,7 +27,6 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableDiscoveryClient
 @RestController
-@EnableAutoConfiguration
 @EnableFeignClients
 public class ZookeeperApplication {
 
