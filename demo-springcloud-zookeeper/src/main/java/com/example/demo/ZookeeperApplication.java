@@ -45,6 +45,10 @@ public class ZookeeperApplication {
     @Autowired
     private AppClient appClient;
 
+
+    @Autowired
+    private OwnerProperties ownerProperties;
+
     @RequestMapping("/")
     public ServiceInstance lb() {
         return this.loadBalancer.choose(this.appName);
@@ -60,17 +64,22 @@ public class ZookeeperApplication {
         return this.appClient.hi();
     }
 
-    @RequestMapping("/myenv")
-    public String env(@RequestParam("prop") String prop) {
+    @RequestMapping("/getFromEnv")
+    public String getFromEnv(@RequestParam("prop") String prop) {
         return new RelaxedPropertyResolver(this.env).getProperty(prop, "Not Found");
     }
 
-    @RequestMapping("/envProp")
-    public String envProp(@RequestParam("prop") String prop){
+    @RequestMapping("/getFromArchaius")
+    public String getFromArchaius(@RequestParam("prop") String prop){
         return DynamicPropertyFactory.getInstance().getStringProperty(prop,"null").get();
     }
 
-    @FeignClient("testZookeeperApp")
+    @RequestMapping("/getFromConfigProperties")
+    public String getFromConfigProperties(){
+        return ownerProperties.getFirstName();
+    }
+
+    @FeignClient("demo-springcloud-zookeeper")
     interface AppClient {
         @RequestMapping(path = "/hi", method = RequestMethod.GET)
         String hi();
