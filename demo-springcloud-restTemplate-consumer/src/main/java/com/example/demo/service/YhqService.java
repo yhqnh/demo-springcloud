@@ -18,7 +18,8 @@ public class YhqService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @HystrixCommand(fallbackMethod = "restTemplateConsumerFallback",commandProperties ={@HystrixProperty(name = "fallback.enabled",value = "true")})
+    @HystrixCommand(fallbackMethod = "restTemplateConsumerFallback",
+            commandProperties ={@HystrixProperty(name = "fallback.enabled",value = "true")})
     public String restTemplateConsumer(){
         return restTemplate.getForEntity("http://demo-springcloud-client/hello",String.class).getBody();
     }
